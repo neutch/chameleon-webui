@@ -1,0 +1,11 @@
+[Unit]
+Description=Chameleon WebUI Deploy Timer
+Requires=chameleon-deploy.service
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+Unit=chameleon-deploy.service
+
+[Install]
+WantedBy=timers.target

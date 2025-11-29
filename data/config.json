@@ -1,0 +1,11 @@
+{
+  "serialPort": "/dev/ttyUSB0",
+  "baudRate": 9600,
+  "maxInputs": 16,
+  "maxOutputs": 32,
+  "commandTimeout": 1000,
+  "maxRetries": 3,
+  "gridRows": 6,
+  "gridCols": 7,
+  "devMode": true
+}

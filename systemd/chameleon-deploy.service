@@ -1,0 +1,11 @@
+[Unit]
+Description=Chameleon WebUI Deploy Service
+After=network.target
+
+[Service]
+Type=oneshot
+User=pi
+WorkingDirectory=/home/pi/chameleon-webui
+ExecStart=/home/pi/chameleon-webui/deploy.sh
+StandardOutput=journal
+StandardError=journal

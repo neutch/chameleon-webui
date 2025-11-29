@@ -1,0 +1,35 @@
+{
+  "name": "chameleon-webui",
+  "version": "1.0.0",
+  "description": "This project provides a modern web-based control interface for the Knox Chameleon HB/MB matrix router using a Raspberry Pi (or other Linux host) connected via RS‑232. The system includes user login via PIN pad, admin configuration, a floor‑map view of TVs, source previews, and reliable serial‑command routing.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "cd client && npm run build",
+    "client": "cd client && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neutch/chameleon-webui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/neutch/chameleon-webui/issues"
+  },
+  "homepage": "https://github.com/neutch/chameleon-webui#readme",
+  "dependencies": {
+    "@serialport/parser-readline": "^13.0.0",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "serialport": "^13.0.0"
+  }
+}

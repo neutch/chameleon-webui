@@ -1,0 +1,64 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.pin-display {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px 0;
+  min-height: 60px;
+  align-items: center;
+}
+
+.pin-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #1890ff;
+  transition: all 0.2s ease;
+}
+
+.pin-dot.empty {
+  background-color: transparent;
+  border: 2px solid #d9d9d9;
+}
+
+.pin-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.pin-button {
+  height: 64px;
+  font-size: 24px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.pin-button.clear,
+.pin-button.submit {
+  font-size: 16px;
+}
+
+.pin-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.pin-button:active {
+  transform: translateY(0);
+}

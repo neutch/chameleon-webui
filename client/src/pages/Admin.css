@@ -1,0 +1,26 @@
+.admin-layout {
+  min-height: 100vh;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.admin-content {
+  padding: 24px;
+  background: #f0f2f5;
+}
+
+.admin-content .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
+  background: white;
+  border-color: #d9d9d9;
+}
+
+.admin-content .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active {
+  background: #1890ff;
+  color: white;
+}
