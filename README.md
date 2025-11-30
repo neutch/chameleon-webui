@@ -1,6 +1,121 @@
-# Chameleon WebUI – Project Plan
+# Chameleon WebUI – Project Status
 
 This project provides a modern web-based control interface for the Knox Chameleon HB/MB matrix router using a Raspberry Pi (or other Linux host) connected via RS‑232. The system includes user login via PIN pad, admin configuration, a floor‑map view of TVs, source previews, and reliable serial‑command routing.
+
+## Current Implementation Status
+
+### ✅ Completed Features
+
+#### Backend (Node.js/Express)
+- ✅ Express server with JWT-based authentication
+- ✅ Cookie-based session management (7-day expiry)
+- ✅ Serial worker with Worker Threads for non-blocking serial communication
+- ✅ Command queue with timeout and retry logic
+- ✅ Support for Both (`B`), Audio (`A`), and Video (`V`) routing commands
+- ✅ Dev mode for testing without hardware
+- ✅ JSON-based data persistence (sources.json, outputs.json, config.json)
+- ✅ Complete REST API for routing, configuration, and admin operations
+- ✅ CORS support for development
+
+#### Frontend (React/Vite/Ant Design)
+- ✅ Modern single-page application with React Router
+- ✅ PIN-pad login with user/admin roles
+- ✅ Grid view displaying TVs in physical layout with empty cells
+- ✅ Source selection modal with current routing display
+- ✅ Admin panel for:
+  - ✅ Source management (add/edit/delete inputs)
+  - ✅ Output management (add/edit/delete TVs with grid positioning)
+  - ✅ System configuration (serial port, dev mode, grid dimensions)
+- ✅ Real-time connection status indicator
+- ✅ Responsive mobile design (iPhone/tablet optimized)
+- ✅ Gradient header with status indicators
+- ✅ Optimistic UI updates with server confirmation
+
+#### Serial Communication
+- ✅ Worker thread-based serial handling
+- ✅ Command queue (one command at a time)
+- ✅ Timeout handling (10 second default)
+- ✅ Response parsing for `DONE`/`ERROR`
+- ✅ Auto-reconnection on serial port disconnect
+- ✅ Configurable serial port path and baud rate
+
+### 🚧 In Progress / Planned
+
+- ⏳ Systemd service configuration
+- ⏳ Automated deployment script (`deploy.sh`)
+- ⏳ Git-pull based auto-update mechanism
+- ⏳ Salvos/preset routing feature
+- ⏳ Range routing commands (`X/Y/Z`)
+- ⏳ Router interrogation commands (`I`, `W`, `M`)
+- ⏳ State sync between server and router on startup
+
+### 🔮 Future Enhancements
+
+- 📋 Live NDI/HLS preview thumbnails
+- 📋 WebSocket for real-time routing updates
+- 📋 SQLite database option
+- 📋 Advanced role-based access controls
+- 📋 Audit logging
+- 📋 Multi-router support
+- 📋 Queued routes + Take commands (`E/F/G`, `EE`)
+
+## Quick Start
+
+### Development Mode (No Hardware Required)
+
+```bash
+# Install dependencies
+npm install
+cd client && npm install && cd ..
+
+# Build the frontend
+npm run build
+
+# Start the server (dev mode enabled by default in .env)
+npm start
+```
+
+Access the UI at `http://localhost:3000`
+
+**Default PINs (from .env):**
+- User PIN: `1234`
+- Admin PIN: `0000`
+
+### Production Mode (With Serial Hardware)
+
+1. Update `.env` to set `DEV_MODE=false`
+2. Configure `SERIAL_PORT` to match your USB-to-serial adapter (e.g., `/dev/ttyUSB0`)
+3. Ensure the Pi user has access to the serial port:
+   ```bash
+   sudo usermod -a -G dialout $USER
+   ```
+4. Start the server:
+   ```bash
+   npm start
+   ```
+
+## Project Structure
+
+```
+chameleon-webui/
+├── server.js              # Express server and API routes
+├── serialWorker.js        # Serial communication worker thread
+├── client/                # React frontend source
+│   ├── src/
+│   │   ├── pages/        # Login, GridView, Admin pages
+│   │   ├── components/   # TVGrid, SourceSelectionModal
+│   │   ├── contexts/     # AuthContext for session management
+│   │   └── services/     # API client functions
+│   └── ...
+├── public/               # Built frontend assets
+├── data/                 # JSON data files
+│   ├── config.json      # System configuration
+│   ├── sources.json     # Input definitions
+│   └── outputs.json     # Output/TV definitions with grid positions
+├── .env                 # Environment variables (not in git)
+├── package.json
+└── README.md
+```
 
 ## Core Components
 

@@ -1,17 +1,22 @@
 .tv-grid-container {
   max-width: 1400px;
   margin: 0 auto;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
 }
 
 .tv-grid {
   display: grid;
   gap: 16px;
   padding: 16px;
+  width: 100%;
 }
 
 .tv-cell {
   aspect-ratio: 16 / 9;
   min-height: 120px;
+  width: 100%;
 }
 
 .tv-cell.empty {
@@ -61,4 +66,72 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .tv-grid {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .tv-cell {
+    min-height: 80px;
+  }
+
+  .tv-card {
+    border-width: 1px;
+  }
+
+  .tv-content {
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .tv-icon {
+    font-size: 20px;
+  }
+
+  .tv-label {
+    font-size: 12px;
+  }
+
+  .tv-source {
+    font-size: 10px;
+  }
+
+  /* Disable hover effects on mobile for better performance */
+  .tv-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  .tv-grid {
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .tv-cell {
+    min-height: 60px;
+  }
+
+  .tv-content {
+    gap: 2px;
+    padding: 2px;
+  }
+
+  .tv-icon {
+    font-size: 16px;
+  }
+
+  .tv-label {
+    font-size: 11px;
+  }
+
+  .tv-source {
+    font-size: 9px;
+  }
 }
