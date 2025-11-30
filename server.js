@@ -197,6 +197,7 @@ app.get('/api/outputs', authenticateToken, (req, res) => {
 app.get('/api/config', authenticateToken, (req, res) => {
   // Don't send sensitive config to client
   const clientConfig = {
+    serialPort: config.serialPort,
     gridRows: config.gridRows,
     gridCols: config.gridCols,
     devMode: config.devMode

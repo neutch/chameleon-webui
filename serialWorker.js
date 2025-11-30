@@ -168,7 +168,7 @@ parentPort.on('message', (message) => {
     case 'getStatus':
       parentPort.postMessage({
         type: 'status',
-        isConnected,
+        connected: isConnected,
         queueLength: commandQueue.length,
         processingCommand
       });
